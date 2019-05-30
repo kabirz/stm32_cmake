@@ -100,10 +100,11 @@ function(stm32_set_flash_params TARGET)
 
     get_target_property(TARGET_LD_FLAGS ${TARGET} LINK_FLAGS)
     if(TARGET_LD_FLAGS)
-        set(TARGET_LD_FLAGS "\"-T${CMAKE_CURRENT_BINARY_DIR}/${BOARD}.ld\" ${TARGET_LD_FLAGS}")
+        set(TARGET_LD_FLAGS "-T${BOARD}.ld ${TARGET_LD_FLAGS}")
     else()
-        set(TARGET_LD_FLAGS "\"-T${CMAKE_CURRENT_BINARY_DIR}/${BOARD}.ld\"")
+        set(TARGET_LD_FLAGS -T${BOARD}.ld)
     endif()
+    set(TARGET_LD_FLAGS "-Wl,-Map,${TARGET}.map ${TARGET_LD_FLAGS}")
     set_target_properties(${TARGET} PROPERTIES LINK_FLAGS ${TARGET_LD_FLAGS})
 endfunction()
 
@@ -111,3 +112,9 @@ function(stm32_set_target_properties TARGET)
     stm32_set_flash_params(${TARGET})
     message(STATUS "${STM32_FAMILY} has ${STM32_FLASH_SIZE}iB of flash memory and ${STM32_RAM_SIZE}iB of RAM")
 endfunction()
+
+set(outputs
+    ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin
+    ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map
+    )
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${outputs}")

@@ -2,6 +2,12 @@
 #include <system.h>
 #include <gpio.h>
 
+static gpiomap gpiolist[] ={
+    {GPIOA, 'A', IOPAEN}, {GPIOB, 'B', IOPBEN},
+    {GPIOC, 'C', IOPCEN}, {GPIOD, 'D', IOPDEN},
+    {GPIOE, 'E', IOPEEN}, {GPIOF, 'F', IOPFEN},
+    {GPIOG, 'G', IOPGEN},
+};
 
 int gpio_output_init(PIN_NUMBER pin_num)
 {

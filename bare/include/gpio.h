@@ -17,12 +17,7 @@ typedef struct{
     char base;
     uint32_t bit;
 }gpiomap;
-static gpiomap gpiolist[] ={
-    {GPIOA, 'A', IOPAEN}, {GPIOB, 'B', IOPBEN},
-    {GPIOC, 'C', IOPCEN}, {GPIOD, 'D', IOPDEN},
-    {GPIOE, 'E', IOPEEN}, {GPIOF, 'F', IOPFEN},
-    {GPIOG, 'G', IOPGEN},
-};
+
 int gpio_output_init(PIN_NUMBER pin_num);
 int gpio_output_write(PIN_NUMBER pin_num, uint32_t high);
 #endif // _GPIO_H_
