@@ -1,0 +1,183 @@
+#ifndef _STM32F103XX_H_
+#define _STM32F103XX_H_
+#include <stdint.h>
+#define __IO volatile
+#define BIT(n) (1 << n)
+typedef struct
+{
+    __IO uint32_t CR;
+#define HSI_ON      BIT(0)
+#define HSI_RDY     BIT(1)
+#define HSITRIM     BIT(3)
+#define HSI_CAL     BIT(8)
+#define HSE_ON      BIT(16)
+#define HSE_RDY     BIT(17)
+#define HSE_BYP     BIT(18)
+#define CSS_ON      BIT(19)
+#define PLL_ON      BIT(24)
+#define PLL_RDY     BIT(25)
+    __IO uint32_t CFGR;
+#define SW          BIT(0)
+#define SWS         BIT(2)
+#define HPRE        BIT(4)
+#define PPRE1       BIT(8)
+#define PPRE2       BIT(11)
+#define ADCPRE      BIT(14)
+#define PLLSRC      BIT(16)
+#define PLLXTPRE    BIT(17)
+#define PLLMUL      BIT(18)
+#define USBPRE      BIT(22)
+#define MCO         BIT(24)
+    __IO uint32_t CIR;
+#define LSIRDYF     BIT(0)
+#define LSERDYF     BIT(1)
+#define HSIRDYF     BIT(2)
+#define HSERDYF     BIT(3)
+#define PLLRDYF     BIT(4)
+#define CSSF        BIT(7)
+#define LSIRDYIE    BIT(8)
+#define LSERDYIE    BIT(9)
+#define HSIRDYIE    BIT(10)
+#define HSERDYIE    BIT(11)
+#define PLLRDYIE    BIT(12)
+#define LSIRDYC     BIT(16)
+#define LSERDYC     BIT(17)
+#define HSIRDYC     BIT(18)
+#define HSERDYC     BIT(19)
+#define PLLRDYC     BIT(20)
+#define CSSC        BIT(23)
+    __IO uint32_t APB2RSTR;
+#define AFIORST     BIT(0)
+#define IOPARST     BIT(2)
+#define IOPBRST     BIT(3)
+#define IOPCRST     BIT(4)
+#define IOPDRST     BIT(5)
+#define IOPERST     BIT(6)
+#define IOPFRST     BIT(7)
+#define IOPGRST     BIT(8)
+#define ADC1RST     BIT(9)
+#define ADC2RST     BIT(10)
+#define ADC3RST     BIT(15)
+#define TIM1RST     BIT(11)
+#define SPI1RST     BIT(12)
+#define TIM8RST     BIT(13)
+#define USART1RST   BIT(14)
+#define TIM9RST     BIT(19)
+#define TIM10RST    BIT(20)
+#define TIM11RST    BIT(21)
+    __IO uint32_t APB1RSTR;
+#define TIM2RST     BIT(0)
+#define TIM3RST     BIT(1)
+#define TIM4RST     BIT(2)
+#define TIM5RST     BIT(3)
+#define TIM6RST     BIT(4)
+#define TIM7RST     BIT(5)
+#define TIM12RST    BIT(6)
+#define TIM13RST    BIT(7)
+#define TIM14RST    BIT(8)
+#define WWDGRST     BIT(11)
+#define SPI2RST     BIT(14)
+#define SPI3RST     BIT(15)
+#define USART2RST   BIT(17)
+#define USART3RST   BIT(18)
+#define UART4RST    BIT(19)
+#define UART5RST    BIT(20)
+#define I2C1RST     BIT(21)
+#define I2C2RST     BIT(22)
+#define USBRST      BIT(23)
+#define CANRST      BIT(25)
+#define BKPRST      BIT(27)
+#define PWRRST      BIT(28)
+#define DACRST      BIT(29)
+    __IO uint32_t AHBENR;
+#define DMA1EN      BIT(0)
+#define DMA2EN      BIT(1)
+#define SRAMEN      BIT(2)
+#define FLITFEN     BIT(4)
+#define CRCEN       BIT(6)
+#define FSMCEN      BIT(8)
+#define SDIOEN      BIT(10)
+    __IO uint32_t APB2ENR;
+#define AFIOEN      BIT(0)
+#define IOPAEN      BIT(2)
+#define IOPBEN      BIT(3)
+#define IOPCEN      BIT(4)
+#define IOPDEN      BIT(5)
+#define IOPEEN      BIT(6)
+#define IOPFEN      BIT(7)
+#define IOPGEN      BIT(8)
+#define ADC1EN      BIT(9)
+#define ADC2EN      BIT(10)
+#define TIM1EN      BIT(11)
+#define SPI1EN      BIT(12)
+#define TIM8EN      BIT(13)
+#define USART1EN    BIT(14)
+#define ADC3EN      BIT(15)
+#define TIM9EN      BIT(19)
+#define TIM10EN     BIT(20)
+#define TIM11EN     BIT(21)
+    __IO uint32_t APB1ENR;
+#define TIM2EN      BIT(0)
+#define TIM3EN      BIT(1)
+#define TIM4EN      BIT(2)
+#define TIM5EN      BIT(3)
+#define TIM6EN      BIT(4)
+#define TIM7EN      BIT(5)
+#define TIM12EN     BIT(6)
+#define TIM13EN     BIT(7)
+#define TIM14EN     BIT(8)
+#define WWDGEN      BIT(11)
+#define SPI2EN      BIT(14)
+#define SPI3EN      BIT(15)
+#define USART2EN    BIT(17)
+#define USART3EN    BIT(18)
+#define UART4EN     BIT(19)
+#define UART5EN     BIT(20)
+#define I2C1EN      BIT(21)
+#define I2C2EN      BIT(22)
+#define USBEN       BIT(23)
+#define CANEN       BIT(25)
+#define BKPEN       BIT(27)
+#define PWREN       BIT(28)
+#define DACEN       BIT(29)
+    __IO uint32_t BDCR;
+#define LSEON       BIT(0)
+#define LSERDY      BIT(1)
+#define LSEBYP      BIT(2)
+#define RTCSEL      BIT(8)
+#define RTCEN       BIT(15)
+#define BDRST       BIT(16)
+    __IO uint32_t CSR;
+#define LSION       BIT(0)
+#define LSIRDY      BIT(1)
+#define RMVF        BIT(24)
+#define PINRSTF     BIT(26)
+#define PORRSTF     BIT(27)
+#define SFTRSTF     BIT(28)
+#define IWDGRSTF    BIT(29)
+#define WWDGRSTF    BIT(30)
+#define LPWRSTF     BIT(31)
+} RCC_TypeDef;
+
+typedef struct
+{
+    __IO uint32_t CRL;
+    __IO uint32_t CRH;
+    __IO uint32_t IDR;
+    __IO uint32_t ODR;
+    __IO uint32_t BSRR;
+    __IO uint32_t BRR;
+    __IO uint32_t LCKR;
+}GPIO_TypeDef;
+
+typedef struct
+{
+    __IO uint32_t EVCR;
+    __IO uint32_t MAPR;
+    __IO uint32_t EXTICR1;
+    __IO uint32_t EXTICR2;
+    __IO uint32_t EXTICR3;
+    __IO uint32_t EXTICR4;
+    __IO uint32_t MAPR2;
+}APIO_Type_def;
+#endif // _STM32F103XX_H_
