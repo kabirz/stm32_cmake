@@ -37,7 +37,7 @@ int gpio_output_init(PIN_NUMBER pin_num)
 
 int gpio_output_write(PIN_NUMBER pin_num, uint32_t high)
 {
-    GPIO_TypeDef *gpio;
+    GPIO_TypeDef *gpio = NULL;
     uint32_t base = pin_num >> 8;
     uint32_t pin = pin_num & 0xff;
     if (pin > 16)

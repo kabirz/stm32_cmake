@@ -2,9 +2,9 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Cortex Debug",
+            "name": "Stlink Debug",
             "cwd": "${workspaceRoot}",
-            "executable": "./bare/out/main.elf",
+            "executable": "${workspaceRoot}/build/main.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
@@ -13,6 +13,7 @@
                 "config/stm32f1x.cfg"
             ],
             "svdFile": "config/STM32F103xx.svd",
+            // "preLaunchTask": "build"
         }
     ]
 }
