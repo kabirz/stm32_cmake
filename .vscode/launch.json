@@ -13,7 +13,20 @@
                 "config/stm32f1x.cfg"
             ],
             "svdFile": "config/STM32F103xx.svd",
-            // "preLaunchTask": "build"
+            "preLaunchTask": "build for debug",
+        },
+        {
+            "name": "Stlink Debug(Skip build)",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/main.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "config/stlink.cfg",
+                "config/stm32f1x.cfg"
+            ],
+            "svdFile": "config/STM32F103xx.svd",
         }
     ]
 }

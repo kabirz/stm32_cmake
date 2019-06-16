@@ -4,38 +4,32 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "config",
+            "label": "build for debug",
             "type": "shell",
             "command": "cmake",
             "args": [
-                "-GNinja",
-                "-DCMAKE_BUILD_TYPE=Debug",
-                "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake",
-                "-Sbare",
-                "-Bbuild"
+                "-GNinja", "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake", "-Sbare", "-Bbuild",
+                "&&",
+                "cmake", "--build", "build"
             ],
             "problemMatcher": []
         },
         {
-            "label": "build",
+            "label": "build for release",
             "type": "shell",
             "command": "cmake",
             "args": [
-                "--build",
-                "build"
+                "-GNinja", "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake", "-Sbare", "-Bbuild",
+                "&&",
+                "cmake", "--build", "build"
             ],
-            "dependsOn": "config",
             "problemMatcher": []
         },
         {
             "label": "clean",
             "type": "shell",
             "command": "cmake",
-            "args": [
-                "-E",
-                "remove_directory",
-                "build"
-            ],
+            "args": ["-E", "remove_directory", "build" ],
             "problemMatcher": []
         }
     ]
