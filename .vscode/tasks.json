@@ -7,30 +7,67 @@
             "label": "build for debug",
             "type": "shell",
             "command": "cmake",
+            "windows": {
+                "command": "cmake -GNinja"
+            },
             "args": [
-                "-GNinja", "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake", "-Sbare", "-Bbuild",
+                "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake", "-Hbare", "-BDebug",
                 "&&",
-                "cmake", "--build", "build"
+                "cmake", "--build", "Debug"
             ],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "build for release",
             "type": "shell",
             "command": "cmake",
+            "windows": {
+                "command": "cmake -GNinja"
+            },
             "args": [
-                "-GNinja", "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake", "-Sbare", "-Bbuild",
+                "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_TOOLCHAIN_FILE=${workspaceRoot}/cmake/stm32.cmake", "-Hbare", "-BRelease",
                 "&&",
-                "cmake", "--build", "build"
+                "cmake", "--build", "Release"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean for debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-E", "remove_directory", "Debug"
             ],
             "problemMatcher": []
         },
         {
-            "label": "clean",
+            "label": "clean for release",
             "type": "shell",
             "command": "cmake",
-            "args": ["-E", "remove_directory", "build" ],
+            "args": [
+                "-E", "remove_directory", "Release"
+            ],
             "problemMatcher": []
+        },
+        {
+            "label": "build for release(Only build)",
+            "type": "shell",
+            "command": "cmake --build Release",
+            "problemMatcher": [],
+        },
+        {
+            "label": "build for debug(Only build)",
+            "type": "shell",
+            "command": "cmake --build Debug",
+            "problemMatcher": [],
         }
     ]
 }

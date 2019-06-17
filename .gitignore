@@ -8,5 +8,7 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 build
+Debug
+Release
 .vscode/.cortex-debug.registers.state.json
 .vscode/.cortex-debug.peripherals.state.json
